@@ -15,7 +15,6 @@ DEFAULT_TIMEOUT = 600 * 1000
 
 def on_response(rep:Response):
     """ page request callback """
-    global CACHED_PATH
     # print(rep.text)
     url = urllib.parse.urlparse(rep.url)
     print(url.path)
