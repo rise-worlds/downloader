@@ -9,13 +9,13 @@ import requests
 
 
 BASE_PATH = '.'
-CACHED_PATH={}
+CACHED_PATH = {}
 DEFAULT_TIMEOUT = 600 * 1000
 
 
 def on_response(rep:Response):
     """ page request callback """
-    global BASE_PATH
+    global CACHED_PATH
     # print(rep.text)
     url = urllib.parse.urlparse(rep.url)
     print(url.path)
@@ -36,11 +36,11 @@ async def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--url", help="need download be h5 url address")
     args = parser.parse_args()
-    
+
     if len(args.url) == 0 :
         parser.print_help()
         return
-    
+
     # 打开浏览器
     async with async_playwright() as pw:
         browser = await pw.chromium.launch(headless=False, timeout=DEFAULT_TIMEOUT, devtools=False)
