@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+""" use playwright & requests download h5 resources """
 import asyncio
 import os
 import urllib.parse
@@ -9,8 +10,9 @@ import requests
 BASE_PATH = '.'
 CACHED_PATH={}
 
-# page request callback
+
 def on_response(rep:Response):
+    """ page request callback """
     global path
     # print(rep.text)
     url = urllib.parse.urlparse(rep.url)
@@ -27,8 +29,9 @@ def on_response(rep:Response):
             CACHED_PATH[url.path] = 1
     pass
 
-# main
+
 async def main():
+    """ main """
     default_timeout = 600 * 1000
     url = "https://incubator-static.easygame2021.com/move-block-game/web-mobile/index.html"
     # 打开浏览器
