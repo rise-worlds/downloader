@@ -1,4 +1,4 @@
 asyncio==3.4.3
 playwright==1.41.0
-requests==2.31.0
-urllib3==2.1.0
+requests==2.32.2
+urllib3==2.2.2
